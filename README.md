@@ -1,11 +1,14 @@
 Projeto Integrador I: Ouro Verde - Sistema de Eventos
+
 Repositório destinado ao desenvolvimento do Projeto Integrador I, focado na criação de uma Landing Page e um sistema de gestão de reservas para o espaço de eventos Ouro Verde.
 
 1. Sobre o Projeto
+2. 
 O Ouro Verde oferece serviços de locação de espaços para eventos (aniversários, casamentos, festas corporativas) e aluguel de produtos (mesas, cadeiras, copos, etc.).
+
 O objetivo deste projeto é otimizar a comunicação entre o cliente e a empresa, permitindo que o usuário visualize os serviços, verifique a disponibilidade de datas e selecione os materiais necessários para o seu evento de forma automatizada.
 
-2. Funcionalidades Principais
+4. Funcionalidades Principais
 - Landing Page: Apresentação institucional dos espaços e serviços disponíveis.
 - Catálogo de Materiais: Visualização de itens para locação devidamente categorizados.
 - Sistema de Reservas: Escolha de serviço principal, data de agendamento e alocação de materiais extras.
