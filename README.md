@@ -24,10 +24,10 @@ O sistema utiliza um banco de dados relacional estruturado a partir do seguinte 
 - SGBD: PostgreSQL.
 
 5. Equipe
-Bruna Dantas Uchôa Macedo - [https://github.com/brunadum]
-Eduardo Bezerra Brandão - [https://github.com/eduubrand]
-José Gabriel Bezerra do Nascimento - [https://github.com/gaabvitti]
-Maria Larissa Rodrigues do Nascimento - [https://github.com/larissardr]
-Paulo Henrique Aurélio Fernandes - [https://github.com/paulohenriq7]
-Paulo Vitor Moura Silva - [https://github.com/Paulovitor854]
-Yann Ciríaco Farias - [https://github.com/yanncfarias]
+- Bruna Dantas Uchôa Macedo - [https://github.com/brunadum]
+- Eduardo Bezerra Brandão - [https://github.com/eduubrand]
+- José Gabriel Bezerra do Nascimento - [https://github.com/gaabvitti]
+- Maria Larissa Rodrigues do Nascimento - [https://github.com/larissardr]
+- Paulo Henrique Aurélio Fernandes - [https://github.com/paulohenriq7]
+- Paulo Vitor Moura Silva - [https://github.com/Paulovitor854]
+- Yann Ciríaco Farias - [https://github.com/yanncfarias]
