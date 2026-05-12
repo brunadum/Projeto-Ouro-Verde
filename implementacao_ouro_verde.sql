@@ -54,7 +54,7 @@ CREATE TABLE Reserva (
     data_evento DATE NOT NULL,
     data_hora_evento TIMESTAMP, 
     status VARCHAR(50) NOT NULL,
-    valor_total NUMERIC(10, 2), -- Atributo derivado
+    valor_total NUMERIC(10, 2),
     CONSTRAINT fk_cliente_reserva FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente),
     CONSTRAINT fk_servico_reserva FOREIGN KEY (id_servico) REFERENCES Servico(id_servico)
 );
