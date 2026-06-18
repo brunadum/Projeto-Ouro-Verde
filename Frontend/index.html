@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ouro Verde Buffet</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            <img src="Imagens/WhatsApp Image 2026-05-07 at 10.17.49 (1) 2.png" alt="Ouro Verde">
+        </div>
+
+        <nav>
+            <a href="#catalogo">Produtos</a>
+            <a href="#como-funciona">Como Funciona</a>
+            <a href="#contato">Contato</a>
+        </nav>
+
+        <div class="carrinho-btn" onclick="abrirCarrinho()">
+            🛒 Carrinho (<span id="contador">0</span>)
+        </div>
+
+    </header>
+
+    <aside id="carrinho-lateral" class="carrinho-lateral">
+
+        <div class="carrinho-topo">
+
+            <h2>🛒 Carrinho</h2>
+
+            <button onclick="fecharCarrinho()">
+                ✕
+            </button>
+
+        </div>
+
+        <div id="itens-carrinho" class="itens-carrinho">
+
+            <p class="vazio">
+                Seu carrinho está vazio
+            </p>
+
+        </div>
+
+        <div class="rodape-carrinho">
+
+            <h3>
+                Total: R$
+                <span id="total">0,00</span>
+            </h3>
+
+        </div>
+
+    </aside>
+
+    <section class="hero">
+
+        <div class="overlay">
+
+            <h1>
+                ENCONTRE AS MELHORES
+                DECORAÇÕES PARA
+                SEU EVENTO
+            </h1>
+
+            <button class="btn-principal">
+                VER CATEGORIAS
+            </button>
+
+        </div>
+
+    </section>
+
+    <section id="como-funciona" class="como-funciona">
+
+        <h2>
+            COMO <span>FUNCIONA</span>
+        </h2>
+
+        <div class="passos">
+
+            <div class="passo">
+                <img src="Imagens/Comparing.png">
+                <h3>Escolha os Itens</h3>
+                <p>Navegue pelo catálogo.</p>
+            </div>
+
+            <div class="passo">
+                <img src="Imagens/Calendar.png">
+                <h3>Defina as Datas</h3>
+                <p>Escolha a data da locação.</p>
+            </div>
+
+            <div class="passo">
+                <img src="Imagens/Delivery Time.png">
+                <h3>Entrega ou Retirada</h3>
+                <p>Receba ou retire.</p>
+            </div>
+
+            <div class="passo">
+                <img src="Imagens/cyber-security.png">
+                <h3>Pagamento Seguro</h3>
+                <p>Pagamento protegido.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="catalogo" class="catalogo">
+
+        <h2>
+            NOSSO
+            <span>CATÁLOGO</span>
+        </h2>
+
+        <div id="filtros" class="filtros"></div>
+
+        <div id="lista-produtos" class="produtos"></div>
+
+    </section>
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
