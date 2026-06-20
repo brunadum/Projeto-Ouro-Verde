@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos - Ouro Verde</title>
+
+    <link rel="stylesheet" href="../adminCSS/pedidos.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+
+            <div class="logo-placeholder">
+                LOGO
+            </div>
+
+            <nav>
+
+                <a href="pedidos.html" class="active">
+                    PEDIDOS
+                </a>
+
+                <a href="produtos.html">
+                    PRODUTOS
+                </a>
+
+            </nav>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <a href="#" id="logoutBtn">
+                SAIR
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!-- CONTEÚDO -->
+
+    <main class="content">
+
+        <h1>
+            PAINEL<span>ADMIN</span>
+        </h1>
+
+        <!-- CARDS -->
+
+        <section class="cards">
+
+            <div class="card">
+                <h3>RECEITA MENSAL</h3>
+                <p id="receitaMensal">R$ 0,00</p>
+            </div>
+
+            <div class="card">
+                <h3>PEDIDOS PENDENTES</h3>
+                <p id="pedidosPendentes">0</p>
+            </div>
+
+            <div class="card">
+                <h3>PEDIDOS FINALIZADOS</h3>
+                <p id="pedidosFinalizados">0</p>
+            </div>
+
+        </section>
+
+        <!-- BOTÕES -->
+
+        <div class="action-buttons">
+
+            <button>
+                PEDIDOS RECENTES
+            </button>
+
+            <button
+                onclick="window.location.href='produtos.html'">
+                GERENCIAR PRODUTOS
+            </button>
+
+        </div>
+
+        <!-- TABELA -->
+
+        <section class="table-container">
+
+            <h3>PEDIDOS RECENTES</h3>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>#</th>
+                        <th>CLIENTE</th>
+                        <th>PRODUTO</th>
+                        <th>PERÍODO</th>
+                        <th>ENTREGA</th>
+                        <th>TOTAL</th>
+                        <th>STATUS</th>
+                        <th>AÇÃO</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="pedidosTable">
+
+                    <!-- API -->
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- MODAL -->
+
+<div class="modal" id="logoutModal">
+
+    <div class="modal-content">
+
+        <h2>Tem certeza que quer sair?</h2>
+
+        <div class="modal-buttons">
+
+            <button id="confirmLogout">
+                SAIR
+            </button>
+
+            <button id="cancelLogout">
+                CANCELAR
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="../adminJS/pedidos.js"></script>
+
+</body>
+</html>

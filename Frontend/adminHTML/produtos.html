@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Ouro Verde</title>
+
+    <link rel="stylesheet" href="../adminCSS/produtos.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+
+            <div class="logo-placeholder">
+                LOGO
+            </div>
+
+            <nav>
+
+                <a href="dashboard.html">
+                    PEDIDOS
+                </a>
+
+                <a href="produtos.html" class="active">
+                    PRODUTOS
+                </a>
+
+            </nav>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <a href="#" id="logoutBtn">
+                SAIR
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!-- CONTEÚDO -->
+
+    <main class="content">
+
+        <h1>
+            PAINEL<span>ADMIN</span>
+        </h1>
+
+        <!-- CARDS -->
+
+        <section class="cards">
+
+            <div class="card">
+                <h3>RECEITA MENSAL</h3>
+            </div>
+
+            <div class="card">
+                <h3>PRODUTOS ATIVOS</h3>
+            </div>
+
+            <div class="card">
+                <h3>PEDIDOS PENDENTES</h3>
+            </div>
+
+        </section>
+
+        <!-- BOTÕES -->
+
+        <div class="action-buttons">
+
+            <button>
+                PEDIDOS RECENTES
+            </button>
+
+            <button>
+                GERENCIAR PRODUTOS
+            </button>
+
+        </div>
+
+        <!-- FORMULÁRIO -->
+
+        <section class="form-container">
+
+            <h3>+ ADICIONAR PRODUTO</h3>
+
+            <form id="produtoForm">
+
+                <div class="form-grid">
+
+    <div class="form-group">
+        <label>NOME DO PRODUTO *</label>
+        <input type="text" id="nome">
+    </div>
+
+    <div class="form-group">
+        <label>CATEGORIA *</label>
+        <input type="text" id="categoria">
+    </div>
+
+    <div class="form-group">
+        <label>PREÇO POR DIA (R$)</label>
+        <input type="number" id="preco">
+    </div>
+
+    <div class="form-group">
+        <label>ESTOQUE *</label>
+        <input type="number" id="estoque">
+    </div>
+
+    <div class="form-group image-field">
+        <label>IMAGEM</label>
+        <input
+            type="file"
+            id="imagem"
+            accept="image/*">
+    </div>
+
+    <div class="form-group description-field">
+        <label>DESCRIÇÃO</label>
+        <textarea id="descricao"></textarea>
+    </div>
+
+</div>
+
+                <button type="submit" class="btn-add">
+                    ADICIONAR
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- MODAL -->
+
+<div class="modal" id="logoutModal">
+
+    <div class="modal-content">
+
+        <h2>Tem certeza que quer sair?</h2>
+
+        <div class="modal-buttons">
+
+            <button id="confirmLogout">
+                SAIR
+            </button>
+
+            <button id="cancelLogout">
+                CANCELAR
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="../adminJS/produtos.js"></script>
+
+</body>
+</html>
