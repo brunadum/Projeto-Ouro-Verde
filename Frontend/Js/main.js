@@ -8,56 +8,74 @@ const categorias = [
 
 const produtos = [
     {
-        nome:"Sofá Marrom",
-        preco:50,
-        categoria:"Mesas"
+        nome: "Sofá Marrom",
+        preco: 50,
+        categoria: "Mesas"
     },
     {
-        nome:"Mesa Redonda",
-        preco:35,
-        categoria:"Mesas"
+        nome: "Mesa Redonda",
+        preco: 35,
+        categoria: "Mesas"
     },
     {
-        nome:"Cadeira Tiffany",
-        preco:15,
-        categoria:"Cadeiras"
+        nome: "Cadeira Tiffany",
+        preco: 15,
+        categoria: "Cadeiras"
     },
     {
-        nome:"Taça Cristal",
-        preco:5,
-        categoria:"Louça"
+        nome: "Taça Cristal",
+        preco: 5,
+        categoria: "Louça"
     },
     {
-        nome:"Toalha Bege",
-        preco:12,
-        categoria:"Tecidos"
+        nome: "Toalha Bege",
+        preco: 12,
+        categoria: "Tecidos"
     }
 ];
 
-let carrinho = JSON.parse(
-    localStorage.getItem("carrinho")
-) || [];
+let carrinho =
+    JSON.parse(localStorage.getItem("carrinho"))
+    || [];
 
-function abrirCarrinho(){
+function abrirCarrinho() {
+
     document
         .getElementById("carrinho-lateral")
         .classList.add("ativo");
 }
 
-function fecharCarrinho(){
+function fecharCarrinho() {
+
     document
         .getElementById("carrinho-lateral")
         .classList.remove("ativo");
 }
 
-function salvarCarrinho(){
+function irParaCatalogo() {
+
+    document
+        .getElementById("catalogo")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+}
+
+function finalizarCompra() {
+
+    window.location.href =
+        "checkout.html";
+}
+
+function salvarCarrinho() {
+
     localStorage.setItem(
         "carrinho",
         JSON.stringify(carrinho)
     );
 }
 
-function adicionarCarrinho(nome, preco){
+function adicionarCarrinho(nome, preco) {
 
     carrinho.push({
         nome,
@@ -69,7 +87,16 @@ function adicionarCarrinho(nome, preco){
     atualizarCarrinho();
 }
 
-function atualizarCarrinho(){
+function removerItem(index) {
+
+    carrinho.splice(index, 1);
+
+    salvarCarrinho();
+
+    atualizarCarrinho();
+}
+
+function atualizarCarrinho() {
 
     const lista =
         document.getElementById("itens-carrinho");
@@ -83,7 +110,7 @@ function atualizarCarrinho(){
     contador.textContent =
         carrinho.length;
 
-    if(carrinho.length === 0){
+    if (carrinho.length === 0) {
 
         lista.innerHTML =
             '<p class="vazio">Seu carrinho está vazio</p>';
@@ -98,18 +125,30 @@ function atualizarCarrinho(){
 
     let soma = 0;
 
-    carrinho.forEach(item => {
+    carrinho.forEach((item, index) => {
 
         soma += item.preco;
 
         lista.innerHTML += `
             <div class="item-carrinho">
 
-                <span>${item.nome}</span>
+                <div>
 
-                <span>
-                    R$ ${item.preco.toFixed(2)}
-                </span>
+                    <strong>
+                        ${item.nome}
+                    </strong>
+
+                    <p>
+                        R$ ${item.preco.toFixed(2)}
+                    </p>
+
+                </div>
+
+                <button
+                    class="btn-remover"
+                    onclick="removerItem(${index})">
+                    ✕
+                </button>
 
             </div>
         `;
@@ -119,22 +158,25 @@ function atualizarCarrinho(){
         soma.toFixed(2);
 }
 
-function carregarCategorias(){
+function carregarCategorias() {
 
     const filtros =
         document.getElementById("filtros");
 
+    filtros.innerHTML = "";
+
     categorias.forEach(categoria => {
 
         filtros.innerHTML += `
-            <button onclick="filtrarProdutos('${categoria}')">
+            <button
+                onclick="filtrarProdutos('${categoria}')">
                 ${categoria}
             </button>
         `;
     });
 }
 
-function carregarProdutos(lista){
+function carregarProdutos(lista) {
 
     const container =
         document.getElementById("lista-produtos");
@@ -144,30 +186,39 @@ function carregarProdutos(lista){
     lista.forEach(produto => {
 
         container.innerHTML += `
+
             <div class="card">
 
                 <div class="imagem"></div>
 
-                <h3>${produto.nome}</h3>
+                <h3>
+                    ${produto.nome}
+                </h3>
 
-                <p>R$ ${produto.preco.toFixed(2)}</p>
+                <p>
+                    R$ ${produto.preco.toFixed(2)}
+                </p>
 
                 <div class="estrelas">
                     ★★★★★
                 </div>
 
-                <button onclick="adicionarCarrinho('${produto.nome}', ${produto.preco})">
+                <button
+                    onclick="adicionarCarrinho('${produto.nome}', ${produto.preco})">
+
                     Adicionar ao Carrinho
+
                 </button>
 
             </div>
+
         `;
     });
 }
 
-function filtrarProdutos(categoria){
+function filtrarProdutos(categoria) {
 
-    if(categoria === "Todos"){
+    if (categoria === "Todos") {
 
         carregarProdutos(produtos);
 
