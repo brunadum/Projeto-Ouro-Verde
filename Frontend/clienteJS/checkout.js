@@ -1,32 +1,30 @@
 const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-function alterarTipoEntrega() {
-    const tipo = document.querySelector('input[name="tipoEntrega"]:checked').value;
-    const endereco = document.getElementById("endereco");
-    endereco.classList.toggle("oculto", tipo !== "entrega");
-    calcularResumo();
-}
-
 function calcularResumo() {
     const lista = document.getElementById("itensResumo");
     let subtotal = 0;
-    lista.innerHTML = "";
+    
+    if (lista) lista.innerHTML = "";
 
     carrinho.forEach(item => {
-        subtotal += item.preco;
-        lista.innerHTML += `
-            <div class="linha-resumo">
-                <span>${item.nome}</span>
-                <span>R$ ${item.preco.toFixed(2)}</span>
-            </div>
-        `;
+        const precoItem = typeof item.preco === 'number' ? item.preco : parseFloat(item.preco) || 0;
+        subtotal += precoItem;
+        
+        if (lista) {
+            lista.innerHTML += `
+                <div class="linha-resumo">
+                    <span>${item.nome}</span>
+                    <span>R$ ${precoItem.toFixed(2)}</span>
+                </div>
+            `;
+        }
     });
 
-    const frete = document.querySelector('input[name="tipoEntrega"]:checked').value === "entrega" ? 30 : 0;
+    const subtotalEl = document.getElementById("subtotal");
+    const totalEl = document.getElementById("total");
 
-    document.getElementById("subtotal").textContent = subtotal.toFixed(2);
-    document.getElementById("frete").textContent = frete.toFixed(2);
-    document.getElementById("total").textContent = (subtotal + frete).toFixed(2);
+    if (subtotalEl) subtotalEl.textContent = subtotal.toFixed(2);
+    if (totalEl) totalEl.textContent = subtotal.toFixed(2);
 }
 
 function agruparItensParaOBackend() {
@@ -46,9 +44,20 @@ function agruparItensParaOBackend() {
     return Object.values(itensAgrupados);
 }
 
-async function finalizarPedido() {
+async function finalizarPedido(event) {
+    if (event) event.preventDefault(); 
+
     if (carrinho.length === 0) {
         alert("Seu carrinho está vazio!");
+        return;
+    }
+
+    const nome = document.getElementById("nome").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const telefone = document.getElementById("telefone").value.trim();
+
+    if (!nome || !email || !telefone) {
+        alert("Por favor, preencha todos os seus campos de identificação (Nome, E-mail e Telefone).");
         return;
     }
 
@@ -58,10 +67,14 @@ async function finalizarPedido() {
         return;
     }
 
+    const totalTexto = document.getElementById("total").textContent;
+    const totalNumerico = parseFloat(totalTexto);
+
     const payloadReserva = {
         idCliente: 1, 
         idServico: 1,
         dataEvento: dataEvento,
+        valorTotal: totalNumerico,
         materiais: agruparItensParaOBackend()
     };
 
@@ -75,12 +88,14 @@ async function finalizarPedido() {
         });
 
         if (resposta.ok) {
-            const reservaCriada = await resposta.json();
+            const metodoEscolhido = document.querySelector('input[name="metodoPagamento"]:checked').value;
             
-            alert(`Pedido enviado com sucesso! Número do pedido: ${reservaCriada.idReserva}`);
+            localStorage.setItem("pagamentoEscolhido", metodoEscolhido);
+            
+            alert("Pedido enviado com sucesso! Ouro Verde Buffet agradece.");
             localStorage.removeItem("carrinho");
-            window.location.href = "sucesso.html"; 
             
+            window.location.href = "sucesso.html"; 
         } else {
             alert("Erro ao criar reserva. Pode não haver estoque suficiente.");
         }
@@ -92,3 +107,10 @@ async function finalizarPedido() {
 }
 
 calcularResumo();
+
+document.addEventListener("DOMContentLoaded", () => {
+    const formulario = document.getElementById("form-checkout");
+    if (formulario) {
+        formulario.addEventListener("submit", finalizarPedido);
+    }
+});

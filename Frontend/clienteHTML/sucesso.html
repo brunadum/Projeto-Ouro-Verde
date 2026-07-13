@@ -35,10 +35,13 @@
                 Em breve nossa equipe entrará em contato.
             </p>
 
+            <div id="instrucoes-pagamento" style="margin: 20px 0; padding: 15px; border-radius: 8px; background-color: #f8f9fa; color: #333; text-align: center;">
+            </div>
+
             <div class="acoes">
 
                 <a
-                    href="catalogo.html"
+                    href="../index.html"
                     class="btn-secundario">
 
                     VOLTAR AO CATÁLOGO
@@ -62,6 +65,31 @@
     <script
         src="../clienteJS/sucesso.js">
     </script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const instrucoes = document.getElementById("instrucoes-pagamento");
+        const metodo = localStorage.getItem("pagamentoEscolhido");
+
+        if (metodo === "pix") {
+            instrucoes.innerHTML = `
+                <h3 style="color: #2e7d32;">Pagamento via Pix</h3>
+                <p>Abra o app do seu banco e use a chave abaixo para confirmar sua reserva:</p>
+                <strong style="font-size: 18px; display: block; margin: 10px 0;">CNPJ: 12.345.678/0001-99</strong>
+                <p style="font-size: 14px; color: #666;">(Ouro Verde Buffet Ltda)</p>
+            `;
+        } else if (metodo === "presencial") {
+            instrucoes.innerHTML = `
+                <h3 style="color: #b71c1c;">Pagamento Presencial</h3>
+                <p>O pagamento das parcelas será realizado no balcão no momento da retirada.</p>
+                <p style="font-size: 14px; color: #666;">Aceitamos dinheiro, débito e crédito (até 3x sem juros).</p>
+            `;
+        } else {
+            instrucoes.style.display = 'none'; 
+        }
+
+        localStorage.removeItem("pagamentoEscolhido");
+    });
+</script>
 
 </body>
 

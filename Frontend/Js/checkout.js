@@ -47,15 +47,12 @@ async function enviarReservaParaOJava(event) {
         });
 
         if (resposta.ok) {
-            const reservaCriada = await resposta.json();
-            alert(`Reserva realizada com sucesso! Número do Pedido: ${reservaCriada.idReserva}`);
+            alert("Reserva realizada com sucesso! Ouro Verde Buffet agradece.");
             
             localStorage.removeItem("carrinho");
-            
             window.location.href = "index.html";
         } else {
-            const erroMensagem = await reply.text();
-            alert(`Erro ao criar reserva: Estocagem insuficiente ou dados inválidos.`);
+            alert("Erro ao criar reserva: Estoque insuficiente ou dados inválidos.");
         }
 
     } catch (erro) {

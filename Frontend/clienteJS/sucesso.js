@@ -5,6 +5,5 @@ window.addEventListener(
         console.log(
             "Página de sucesso carregada."
         );
-
     }
 );
